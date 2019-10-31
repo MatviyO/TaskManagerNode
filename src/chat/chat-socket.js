@@ -19,9 +19,9 @@ module.exports = (io) => {
 
 		socket.on('chat', (dataObj) => {
 
-			((token) => {
-				jwt.verify(token, '6MEJs8tC3sYX72fPB57cvxp', (err, decoded) => {
-					if (err) return console.error('decoded', err);
+			// ((token) => {
+			// 	jwt.verify(token, '6MEJs8tC3sYX72fPB57cvxp', (err, decoded) => {
+			// 		if (err) return console.error('decoded', err);
 
 					UsersModel.findOne({email: decoded.email}).
 						lean().
@@ -40,8 +40,8 @@ module.exports = (io) => {
 							});
 						});
 
-				});
-			})(dataObj.token)
+			// 	});
+			// })(dataObj.token)
 
 		});
 

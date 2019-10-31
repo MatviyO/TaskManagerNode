@@ -17,7 +17,7 @@ mongoose.connect('mongodb://link:game123@ds031721.mlab.com:31721/taskmanager', {
 mongoose.Promise = require('bluebird');
 
 
-require('./authenticate/auth')(app);
+// require('./authenticate/auth')(app);
 
 require('./chat/chat-socket')(io);
 require('./boards/boards-socket')(io);
