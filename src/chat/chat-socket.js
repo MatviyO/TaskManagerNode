@@ -2,7 +2,7 @@
 
 const MessageModel = require('../_models/messages.model');
 const UsersModel = require('../_models/users.model');
-const jwt = require('jsonwebtoken');
+//const jwt = require('jsonwebtoken');
 
 
 
@@ -23,21 +23,22 @@ module.exports = (io) => {
 			// 	jwt.verify(token, '6MEJs8tC3sYX72fPB57cvxp', (err, decoded) => {
 			// 		if (err) return console.error('decoded', err);
 
-					UsersModel.findOne({email: decoded.email}).
-						lean().
-						exec((err, res) => {
-							if (err) return console.error('UsersModel.findOne', err);
+					// UsersModel.findOne({email: decoded.email}).
+					// 	lean().
+					// 	exec((err, res) => {
+					// 		if (err) return console.error('UsersModel.findOne', err);
 
-							const obj = {
-								date: new Date(),
-								content: dataObj.data,
-								username: res.username
-							};
+							
+					// 	});
+						const obj = {
+							date: new Date(),
+							content: dataObj.data,
+							username: ''
+						};
 
-							MessageModel.create(obj, err => {
-								if (err) return console.error('MessageModel', err);
-								io.emit('message', obj);
-							});
+						MessageModel.create(obj, err => {
+							if (err) return console.error('MessageModel', err);
+							io.emit('message', obj);
 						});
 
 			// 	});
